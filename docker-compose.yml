@@ -1,0 +1,66 @@
+version: '3'
+
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    image: client
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    networks:
+      - training-plan
+  server:
+    image: server
+    container_name: server
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - MONGO_USERNAME=$MONGO_USERNAME
+      - MONGO_PASSWORD=$MONGO_PASSWORD
+      - MONGO_HOSTNAME=cluster0.wucbb.mongodb.net
+      - MONGO_PORT=$MONGO_PORT
+      - MONGO_DB=$MONGO_DB
+    ports:
+      - "5050:5050"
+    volumes:
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    networks:
+      - training-plan
+    depends_on: 
+      - db
+    networks:
+      - training-plan
+    command: ./wait-for.sh db:27017 -- /home/node/app/node_modules/.bin/nodemon app.js
+
+  db:
+    image: mongo:4.1.8-xenial
+    container_name: db
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=$MONGO_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASSWORD
+    volumes:
+      - dbdata:/data/db
+    networks:
+      - training-plan
+
+  # client:
+  #   stdin_open: true
+  #   build:
+  #     dockerfile: Dockerfile.dev
+  #     context: ./client
+  #   volumes:
+  #     - /app/node_modules
+  #     - ./client:/app
+      
+networks:
+  training-plan:
+    driver: bridge
+
+volumes:
+  dbdata:
+  node_modules:

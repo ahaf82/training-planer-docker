@@ -10,11 +10,11 @@ router.use(bodyParser.json());
 
 
 // Push-Messages
-webpush.setVapidDetails(
-    "mailto:training.planer@gmail.com",
-    process.env.VAPID_PUBLIC_KEY,
-    process.env.VAPID_PRIVATE_KEY
-);
+// webpush.setVapidDetails(
+//     "mailto:training.planer@gmail.com",
+//     process.env.VAPID_PUBLIC_KEY,
+//     process.env.VAPID_PRIVATE_KEY
+// );
 
 // Subscribe Route
 router.post("/", async (req, res) => {
