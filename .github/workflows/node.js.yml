@@ -29,7 +29,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Install modules
       run: yarn install
-    - name: Run tests
-      run: yarn test --scripts-prepend-node-path
+    # - name: Run tests
+    #   run: yarn test
     - name: Build
       run: yarn build
