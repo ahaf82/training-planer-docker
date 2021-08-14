@@ -30,6 +30,6 @@ jobs:
     - name: Install modules
       run: yarn install
     - name: Run tests
-      run: yarn test
+      run: yarn test --scripts-prepend-node-path
     - name: Build
       run: yarn build
