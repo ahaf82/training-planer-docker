@@ -22,6 +22,8 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
+      with:
+        ref: master
 
     - name: Setup use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
@@ -32,16 +34,8 @@ jobs:
       run: npm cache clean --force
     - name: Install dependencies
       run: npm install
-      working-directory: ../../
-    - name: Install client dependencies
-      run: mkdir client
-      working-directory: ../../
-    - name: Install client dependencies
-      run: npm install
-      working-directory: ../../client
     - name: Run the tests
       run: npm test
-      working-directory: ../../
     - name: Build
       run: npm run build --if-present
 
