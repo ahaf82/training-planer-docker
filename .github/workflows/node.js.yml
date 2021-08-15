@@ -22,8 +22,6 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
-      with:
-        ref: master
 
     - name: Setup use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
