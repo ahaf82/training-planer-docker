@@ -34,6 +34,9 @@ jobs:
       run: npm install
       working-directory: ../../
     - name: Install client dependencies
+      run: mkdir client
+      working-directory: ../../
+    - name: Install client dependencies
       run: npm install
       working-directory: ../../client
     - name: Run the tests
