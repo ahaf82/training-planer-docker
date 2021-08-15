@@ -41,5 +41,4 @@ jobs:
       run: npm test
     - name: Build
       run: npm run build --if-present
-      working-directory: client
 
