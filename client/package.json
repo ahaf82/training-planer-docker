@@ -7,6 +7,7 @@
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.0",
     "axios": "^0.21.1",
+    "core-js": "^3.16.1",
     "file-saver": "^2.0.5",
     "firebase": "^8.7.1",
     "materialize-css": "^1.0.0",
@@ -20,8 +21,7 @@
     "recompose": "^0.30.0",
     "semantic-ui-react": "^2.0.3",
     "simple-react-calendar": "^2.2.8",
-    "training-planner": "file:..",
-    "web-vitals": "^1.0.1",
+    "web-vitals": "^2.1.0",
     "xlsx": "^0.17.0"
   },
   "scripts": {
@@ -48,7 +48,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5050/",
+  "proxy": "http://server:5050/",
   "secure": "false",
   "devDependencies": {
     "@babel/preset-react": "^7.14.5"

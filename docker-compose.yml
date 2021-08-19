@@ -1,17 +1,41 @@
 version: '3'
 
 services:
+  # nginx:
+  #   depends_on:
+  #     - server
+  #     - client
+  #   restart: always
+  #   build:
+  #     dockerfile: Dockerfile
+  #     context: ./nginx
+  #   ports:
+  #     - '3050:80'
+
   client:
     build:
       context: ./client
       dockerfile: Dockerfile
     image: client
+    container_name: client
     stdin_open: true
     ports:
       - "3000:3000"
     networks:
       - training-plan
+    depends_on: 
+      - server
+    # volumes:
+    #    - /app/node_modules
+    #    - .:/client/app
+
   server:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    # volumes:
+    #   - /app/node_modules
+    #   - ./server:/app
     image: server
     container_name: server
     restart: unless-stopped
@@ -24,16 +48,16 @@ services:
       - MONGO_DB=$MONGO_DB
     ports:
       - "5050:5050"
-    volumes:
-      - .:/home/node/app
-      - node_modules:/home/node/app/node_modules
+    # volumes:
+    #   - .:/home/node/app
+    #   - node_modules:/home/node/app/node_modules
     networks:
-      - training-plan
+      - training-plan 
     depends_on: 
       - db
     networks:
       - training-plan
-    command: ./wait-for.sh db:27017 -- /home/node/app/node_modules/.bin/nodemon app.js
+    # command: ./wait-for.sh db:27017 -- /home/node/app/node_modules/.bin/nodemon app.js
 
   db:
     image: mongo:4.1.8-xenial
@@ -47,15 +71,6 @@ services:
       - dbdata:/data/db
     networks:
       - training-plan
-
-  # client:
-  #   stdin_open: true
-  #   build:
-  #     dockerfile: Dockerfile.dev
-  #     context: ./client
-  #   volumes:
-  #     - /app/node_modules
-  #     - ./client:/app
       
 networks:
   training-plan:
