@@ -12,7 +12,7 @@ const Login = (props) => {
     const { login, error, clearErrors, isAuthenticated } = authContext;
 
     useEffect(() => {
-        if(isAuthenticated) {
+        if (isAuthenticated) {
             props.history.push('/');
         }
 
@@ -53,11 +53,11 @@ const Login = (props) => {
             <form onSubmit={onSubmit}>
                 <div className='form-group'>
                     <label htmlFor='email'>E-Mail Adresse</label>
-                    <input type='email' name='email' value={email} onChange={onChange} />
+                    <input className="email-input" type='email' name='email' value={email} onChange={onChange} />
                 </div>
                 <div className='form-group'>
                     <label htmlFor='password'>Passwort</label>
-                    <input type='password' name='password' value={password} onChange={onChange} />
+                    <input className="password-input" type='password' name='password' value={password} onChange={onChange} />
                 </div>
                 <input type="submit" value="Login" className="btn btn-dark btn-block" />
             </form>
@@ -65,7 +65,7 @@ const Login = (props) => {
                 <Link to='/resetPassword'><span className='text-dark small'>Passwort zurücksetzen</span></Link>
             </li>
         </div>
-        
+
     )
 }
 

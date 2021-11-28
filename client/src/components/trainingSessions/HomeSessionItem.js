@@ -20,7 +20,7 @@ const HomeSessionItem = ({ session }) => {
     const { description, maxMembers, memberCount, members, time, timeTo, date } = session;
 
     let group = [];
-    if (trainingGroup) {
+    if (!!trainingGroup) {
         group = trainingGroup.filter(item => item._id === session.trainingGroup);
     }
 
@@ -36,11 +36,11 @@ const HomeSessionItem = ({ session }) => {
     let sessionMembers;
     if (memberContext.members) {
         // console.log("context", memberContext.members);
-        let subMembers = [ ...memberContext.members.filter(element => element.familyMember.length > 0).map(element => element.familyMember).flat(1) ];
+        let subMembers = [...memberContext.members.filter(element => element.familyMember.length > 0).map(element => element.familyMember).flat(1)];
         // console.log("subs", subMembers);
         let sessionSubMembers = subMembers.filter(obj => session.members.includes(obj._id));
         // console.log("groupsubs", sessionSubMembers);
-        sessionMembers = [ ...memberContext.members.filter(element => session.members.includes(element._id)), ...sessionSubMembers ];
+        sessionMembers = [...memberContext.members.filter(element => session.members.includes(element._id)), ...sessionSubMembers];
         // sessionMembers = [...new Set(memberContext.members.filter(element => session.members.includes(element._id)))];
         // sessionMembers = [...new Set(sessionMembers)];
     }
@@ -56,14 +56,14 @@ const HomeSessionItem = ({ session }) => {
 
             <div className={checked === true ? 'card bg-primary' : 'card bg-light card-content'}>
                 <h3 className={checked === true ? 'text- text-left large' : 'text-primary text-left large'}>
-                  
+
                     {description}{' '}
                 </h3>
                 <ul className="list">
-                    {trainingGroup && group[0].trainingGroup && !loading && <li>
+                    {!!trainingGroup && group[0].trainingGroup && !loading && <li>
                         <i></i> Trainingsgruppe: {group[0].trainingGroup
                         }
-                    </li>}                    
+                    </li>}
                     {memberContext.members && trainerName && !loading && <li>
                         <i></i> Trainer: {trainerName[0].name}
                     </li>}
@@ -80,7 +80,7 @@ const HomeSessionItem = ({ session }) => {
                         <i></i> Angemeldete Teilnehmer: {memberCount}
                     </li>}
                     {(role === 'admin' || role === 'superUser') && sessionMembers && <div>
-                        <i className="fa fa-user"></i> <strong>Teilnehmer:</strong> <br/>
+                        <i className="fa fa-user"></i> <strong>Teilnehmer:</strong> <br />
                         {sessionMembers.map(member => member.name).join(', ')}
                     </div>}
                 </ul>

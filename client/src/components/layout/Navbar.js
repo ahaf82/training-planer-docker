@@ -24,30 +24,30 @@ const Navbar = ({ title, icon }) => {
     const authLinks = (
         <Fragment>
             <li>
-                <Link to='/'><i className="fa fa-list-alt" aria-hidden="true"></i><span className="hide-sm"> Übersicht</span></Link>
+                <Link to='/'><i className="fa fa-list-alt" aria-hidden="true"></i><span className="hide-sm" id="overview"> Übersicht</span></Link>
             </li>
             {(role === 'admin' || role === 'superUser') &&
                 <li>
-                    <Link to='/sessions'><i className="fa fa-calendar" aria-hidden="true"></i><span className="hide-sm"> Trainingseinheiten</span></Link>
+                    <Link to='/sessions'><i className="fa fa-calendar" aria-hidden="true"></i><span className="hide-sm" id="training-sessions"> Trainingseinheiten</span></Link>
                 </li>}
             {(role === 'admin' || role === 'superUser') &&
                 <li>
-                    <Link to='/groups'><i className="fa fa-users" aria-hidden="true"></i><span className="hide-sm"> Trainingsgruppen</span></Link>
+                    <Link to='/groups'><i className="fa fa-users" aria-hidden="true"></i><span className="hide-sm" id="training-groups"> Trainingsgruppen</span></Link>
                 </li>}
             {(role === 'admin' || role === 'superUser') &&
-            <li>
-                <Link to='/messages'><i className="fa fa-envelope-open-text" aria-hidden="true"></i><span className="hide-sm"> Nachrichten</span></Link>
-            </li>}
+                <li>
+                    <Link to='/messages'><i className="fa fa-envelope-open-text" aria-hidden="true"></i><span className="hide-sm" id="messages"> Nachrichten</span></Link>
+                </li>}
             {/* {(role === 'admin' || role === 'superUser') &&
             <li>
                 <Link to='/memberPage'><i className="fa fa-user-circle" aria-hidden="true"></i><span className="hide-sm"> Mitglieder</span></Link>
             </li>} */}
             <li>
-                <Link to='/memberPage'><i className="fa fa-user-circle" aria-hidden="true"></i><span className="hide-sm"> Mitglieder</span></Link>
+                <Link to='/memberPage'><i className="fa fa-user-circle" aria-hidden="true"></i><span className="hide-sm" id="members"> Mitglieder</span></Link>
             </li>
             {(role === 'admin' || role === 'superUser') &&
                 <li>
-                    <Link to='/oldSess'><i className="fa fa-reply-all" aria-hidden="true"></i><span className="hide-sm"> Alte Einträge</span></Link>
+                    <Link to='/oldSess'><i className="fa fa-reply-all" aria-hidden="true"></i><span className="hide-sm" id="old-sessions"> Alte Einträge</span></Link>
                 </li>}
 
             {role === 'member' &&
@@ -56,7 +56,7 @@ const Navbar = ({ title, icon }) => {
                 </li>}
             <li>
                 <a onClick={onLogout} href="#!">
-                    <i className="fas fa-sign-out-alt"></i><span className="hide-sm"> Logout</span>
+                    <i className="fas fa-sign-out-alt"></i><span className="hide-sm" id="logout"> Logout</span>
                 </a>
             </li>
         </Fragment>

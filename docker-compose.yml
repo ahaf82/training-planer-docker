@@ -16,9 +16,11 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile
-    image: client
+    # image: client
+    image: ahaf82/client
     container_name: client
     stdin_open: true
+    domainname: z-camp
     ports:
       - "3000:3000"
     networks:
@@ -36,9 +38,11 @@ services:
     # volumes:
     #   - /app/node_modules
     #   - ./server:/app
-    image: server
+    # image: server
+    image: ahaf82/server
     container_name: server
-    restart: unless-stopped
+    domainname: z-camp
+    restart: always
     env_file: .env
     environment:
       - MONGO_USERNAME=$MONGO_USERNAME
@@ -62,7 +66,8 @@ services:
   db:
     image: mongo:4.1.8-xenial
     container_name: db
-    restart: unless-stopped
+    domainname: z-camp
+    restart: always
     env_file: .env
     environment:
       - MONGO_INITDB_ROOT_USERNAME=$MONGO_USERNAME

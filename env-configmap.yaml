@@ -1,0 +1,23 @@
+apiVersion: v1
+data:
+  EMAIL_FROM: info@training-planer.de
+  EMAIL_HOST: smtp.strato.de
+  EMAIL_PASSWORD: Felix_0309
+  EMAIL_USERNAME: info@training-planer.de
+  FACEBOOK_CLIENT_ID: "3000502620004293"
+  FACEBOOK_CLIENT_SECRET: 069195a7d60fa5f339f20a5166a200d3
+  GOOGLE_CLIENT_ID: 1007573378490-nagjgdqd4boq5btohp89ief0kd09g4ir.apps.googleusercontent.com
+  GOOGLE_CLIENT_SECRET: MljrcEIv-or2KvEhsqAihY9c
+  MONGO_DB: test
+  MONGO_PASSWORD: GuestSession
+  MONGO_PORT: "27017"
+  MONGO_USERNAME: Guest
+  REACT_APP_VAPID_PUBLIC_KEY: BHdPFvPLuUV7jmCHacz5h8Qty4BX878BWqirptmLKqKC4SeUjqlqm_ki8R0hjk1wLFSxbFugvEAUcMphIYnyNLg
+  VAPID_PRIVATE_KEY: BJ8wEX1hlqf6jEaL7w7ObBC9aWtRKkRUpFAaqy4faS4
+  VAPID_PUBLIC_KEY: BHdPFvPLuUV7jmCHacz5h8Qty4BX878BWqirptmLKqKC4SeUjqlqm_ki8R0hjk1wLFSxbFugvEAUcMphIYnyNLg
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: db-env
+  name: env

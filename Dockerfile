@@ -9,7 +9,7 @@ COPY package*.json ./
 
 # USER node
 
-RUN npm install
+RUN yarn
 
 COPY . .
 
@@ -17,4 +17,4 @@ COPY . .
 
 EXPOSE 5050
 
-CMD [ "node", "server.js" ]
+CMD [ "nodemon" ]
